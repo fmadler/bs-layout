@@ -1,0 +1,21 @@
+<div class="bd-callout bd-callout-{{@style}}">
+  <h3 class="el-callout-title">
+    {{yield (hash title=(component "bs/default-snippet"))}}
+    <button type="button"
+            class="btn btn-outline-secondary float-end"
+            data-cy="{{@key}}"
+            {{on "click" this.toggleIt}}
+    >
+      <FaIcon @icon="caret-{{if this.toggle "down" "up"}}" @size="2x"/>
+    </button>
+  </h3>
+  {{#if this.toggle}}
+    <hr/>
+    {{yield (hash content=(component "bs/default-snippet"))}}
+    <p>
+      <a class="link-opacity-50-hover float-end" href="#" {{on "click" this.toggleIt}}>
+      </a>
+    </p>
+    <br>
+  {{/if}}
+</div>
