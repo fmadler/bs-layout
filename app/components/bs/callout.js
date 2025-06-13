@@ -1,1 +1,1 @@
-export { default } from 'bs-layout/components/bs/callout';
+export { default } from '@fmadler/bs-layout/components/bs/callout';

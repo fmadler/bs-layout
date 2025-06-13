@@ -1,15 +1,17 @@
 {
-  "name": "bs-layout",
-  "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "name": "@fmadler/bs-layout",
+  "version": "0.0.2",
+  "description": "Sample useful Bootstrap layout",
   "keywords": [
     "ember-addon"
   ],
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fmadler/bs-layout.git"
+  },
   "license": "MIT",
-  "author": "",
+  "author": "Florian Adler",
   "directories": {
-    "doc": "doc",
     "test": "tests"
   },
   "scripts": {
@@ -121,5 +123,10 @@
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
-  }
+  },
+  "main": "index.js",
+  "bugs": {
+    "url": "https://github.com/fmadler/bs-layout/issues"
+  },
+  "homepage": "https://github.com/fmadler/bs-layout#readme"
 }

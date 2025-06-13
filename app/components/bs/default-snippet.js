@@ -1,1 +1,1 @@
-export { default } from 'bs-layout/components/bs/default-snippet';
+export { default } from '@fmadler/bs-layout/components/bs/default-snippet';
