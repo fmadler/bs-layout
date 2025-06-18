@@ -1,0 +1,44 @@
+{{#if @property.constraint.example}}
+  <label for="{{@property.name}}" class="form-label">{{@property.name}} ex: <span class="fst-italic">{{@property.constraint.example}}</span>
+    &nbsp;<button class="btn" type="button" {{on "click" (fn @method @text @property.constraint.example)}}>Replace <FaIcon @icon="arrow-down" /></button>
+  </label>
+{{/if}}
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text">{{@property.label}}</span>
+  </div>
+  {{#if @property.constraint.enumeration}}
+    <select data-cy="property-{{@property.name}}" class="form-select"
+      {{on "change" (fn @method @property.name this.value)}}>
+      <option selected>Choose...</option>
+      {{#each @property.constraint.enumeration as |item index| }}
+        {{#if (eq item this.value)}}
+          <option value="{{item}}" selected>{{item}}</option>
+        {{else}}
+          <option value="{{item}}">{{item}}</option>
+        {{/if}}
+      {{/each}}
+    </select>
+    <div hidden="true" data-value={{this.value}}/>
+  {{else}}
+    <Input type="text"
+           class="form-control"
+           @value={{this.value}}
+           readonly={{@readonly}}
+           data-cy="property-{{@property.name}}"
+           placeholder={{@property.constraint.placeHolder}}
+    />
+  {{/if}}
+  <div class="input-group-append">
+    <button class="btn btn-outline-secondary"
+            data-cy="replace-{{@property.name}}"
+            type="button" {{on "click" (fn @method @property.name this.value)}}>
+      Replace
+      {{#if (eq @value @currentValue)}}
+        <span style="color:darkgreen">
+          <FaIcon @icon="check"/>
+        </span>
+      {{/if}}
+    </button>
+  </div>
+</div>

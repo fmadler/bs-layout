@@ -1,0 +1,13 @@
+<div class="form-group">
+  {{#if @label}}
+    <label class={{@class}} for={{@label}}>{{@label}}</label>
+  {{else}}
+  {{/if}}
+    <Textarea class="form-control"
+              rows={{@rows}}
+              id={{@id}}
+              @value={{@value}}
+              readonly={{@readonly}}
+              data-cy="area-{{@key}}"
+    />
+</div>

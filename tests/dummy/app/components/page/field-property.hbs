@@ -1,0 +1,40 @@
+<Bs::InfoCaption @title="Property">
+  Parse a text
+  <ul>
+    <li>Detect properties</li>
+    <li>Enrich properties</li>
+    <li>Propose properties' placeholder</li>
+    <li>Change properties' value</li>
+    <li>Render text</li>
+  </ul>
+</Bs::InfoCaption>
+
+
+<Bs::TextareaGroup
+  @label="Enter a sample text with elements between ${ and }"
+  @value={{this.textWithPlaceholders}}
+/>
+<Bs::FormButton
+  @color="warning"
+  @fn={{this.extractElements}}
+  >
+  Extract properties
+</Bs::FormButton>
+
+{{#each this.extractedParams as |prop| }}
+  <Bs::AddProperty
+    @property={{prop}}
+    @method={{this.callback}}
+  />
+{{/each}}
+
+{{#if this.textWithPlaceholdersResult}}
+  Result: {{this.textWithPlaceholdersResult}}
+{{/if}}
+<hr>
+{{#each @model.properties as |prop| }}
+  <Bs::AddProperty
+    @property={{prop.property}}
+    @method={{this.callback}}
+  />
+{{/each}}

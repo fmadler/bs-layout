@@ -1,0 +1,7 @@
+<div class="alert alert-info" role="alert">
+  {{#if @title}}
+    <span><FaIcon @icon="info-circle"></FaIcon> {{@title}}</span>
+    <br/>
+  {{/if}}
+  {{yield}}
+</div>

@@ -1,0 +1,19 @@
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text {{@class}}">{{@text}}</span>
+  </div>
+  {{#if @enumeration}}
+    <select class="form-select" {{on "change" @method}}>
+      <option selected>Choose...</option>
+      {{#each this.enumerationList as |item index| }}
+        <option value="{{item}}">{{item}}</option>
+      {{/each}}
+    </select>
+    <div hidden="true" data-value={{@value}}/>
+  {{else}}
+    <Input type={{if @type @type "text"}}
+           class="form-control"
+           data-cy="input-{{@key}}"
+           @value={{@value}} readonly={{@readonly}} placeholder={{@placeholder}} />
+  {{/if}}
+</div>

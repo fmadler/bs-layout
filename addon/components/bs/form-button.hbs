@@ -1,0 +1,3 @@
+<button type="button" class="btn btn-{{@color}}" {{on "click" (fn this.call @fn)}}>
+  {{yield (hash title=(component "bs/default-snippet"))}}
+</button>

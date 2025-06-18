@@ -1,0 +1,14 @@
+<form id="file-upload">
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text {{@class}}">{{@text}}</span>
+    </div>
+    <div class="custom-file">
+      <input type="file"
+             class="custom-file-input"
+             data-cy="config-{{@key}}"
+        {{on "change" @method}}>
+      <label class="custom-file-label">{{#if @fileName}}{{@fileName}}{{/if}}</label>
+    </div>
+  </div>
+</form>

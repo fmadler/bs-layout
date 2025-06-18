@@ -40,6 +40,15 @@ ember generate ember-bootstrap
 npm install ember-cli-sass
 ember g ember-cli-sass
 ```
+
+## For publication
+
+### Still to do
+* Convert /app/compoment/bs/**.js to add namespace "@fmadler/"
+
+Otherwise it's not working in dummy application.hbs page
+
+
 ## Usage
 
 [Longer description of how to use the addon in apps.]
