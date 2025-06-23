@@ -1,0 +1,32 @@
+{{#if (eq @inputType "textarea")}}
+  <Bs::TextareaGroup
+    @label={{if @label @label ""}}
+    @value={{@input}}
+    @onChange={{this.onChange}}
+  />
+{{else}}
+  {{@input}}
+{{/if}}
+
+{{#if this.showExtractPropertyButton }}
+  <Bs::FormButton
+    @color="warning"
+    @fn={{this.extractElements}}
+  >
+    Extract properties
+  </Bs::FormButton>
+{{/if}}
+{{#each this.extractedParams as |prop| }}
+  <Bs::AddProperty
+    @property={{prop}}
+    @method={{this.callback}}
+  />
+{{/each}}
+
+{{#if this.textWithPlaceholdersResult}}
+  {{#if (eq @outputType 'URL')}}
+    <a href="{{this.textWithPlaceholdersResult}}" target="_blank">{{this.textWithPlaceholdersResult}}</a>
+  {{else}}
+    Result: {{this.textWithPlaceholdersResult}}
+  {{/if}}
+{{/if}}

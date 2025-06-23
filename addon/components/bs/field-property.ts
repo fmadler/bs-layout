@@ -3,7 +3,7 @@ import {action} from "@ember/object";
 import {tracked} from "@glimmer/tracking";
 import {extractParams, replaceParams} from "@fmadler/bs-layout/utils/string-utils"
 
-export interface PageFieldPropertySignature {
+export interface FieldPropertySignature {
   // The arguments accepted by the component
   Args: {};
   // Any blocks yielded by the component
@@ -14,10 +14,12 @@ export interface PageFieldPropertySignature {
   Element: null;
 }
 
-export default class PageFieldProperty extends Component<PageFieldPropertySignature> {
+export default class FieldProperty extends Component<FieldPropertySignature> {
 
-
-  textWithPlaceholders=null
+  @tracked
+  textWithPlaceholdersInit=this.args.input;
+  @tracked
+  textWithPlaceholders=this.args.input;
 
   @tracked
   textWithPlaceholdersResult="";
@@ -26,13 +28,29 @@ export default class PageFieldProperty extends Component<PageFieldPropertySignat
   propertyMap=new Map();
 
   @tracked
-  extractedParams:any;
+  extractedParams:any=extractParams(this.textWithPlaceholders);
 
+  @tracked
+  showExtractPropertyButton:boolean=this.extractedParams===null;
+
+  @action
+  onChange(event:any) {
+    this.showExtractPropertyButton;
+  }
+
+  get textWithPlaceholdersHasChanged () {
+    return this.textWithPlaceholdersInit !== this.textWithPlaceholders
+  }
 
   @action
   callback(propName:string, propValue:string, event:any) {
     this.propertyMap.set(propName,{name:propName, value:propValue});
     this.textWithPlaceholdersResult = replaceParams(this.textWithPlaceholders, this.propertyMap);
+  }
+
+  @action
+  extractElements() {
+    this.extractedParams = extractParams(this.textWithPlaceholders);
   }
 
 }

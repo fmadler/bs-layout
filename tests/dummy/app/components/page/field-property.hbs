@@ -10,27 +10,21 @@
 </Bs::InfoCaption>
 
 
-<Bs::TextareaGroup
-  @label="Enter a sample text with elements between ${ and }"
-  @value={{this.textWithPlaceholders}}
+
+<hr>
+<Bs::FieldProperty
+  @label="Enter a sample text with elements between ${ and }!!"
+  @input="text with ${param1} and ${param2}"
+  @inputType="textarea"
 />
-<Bs::FormButton
-  @color="warning"
-  @fn={{this.extractElements}}
-  >
-  Extract properties
-</Bs::FormButton>
 
-{{#each this.extractedParams as |prop| }}
-  <Bs::AddProperty
-    @property={{prop}}
-    @method={{this.callback}}
-  />
-{{/each}}
 
-{{#if this.textWithPlaceholdersResult}}
-  Result: {{this.textWithPlaceholdersResult}}
-{{/if}}
+<hr>
+<Bs::FieldProperty
+  @input="text with ${userId} and ${dossierId}"
+  @inputType="text"
+  @outputType="URL"
+/>
 <hr>
 {{#each @model.properties as |prop| }}
   <Bs::AddProperty
