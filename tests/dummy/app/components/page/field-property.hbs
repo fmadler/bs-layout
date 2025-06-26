@@ -9,15 +9,13 @@
   </ul>
 </Bs::InfoCaption>
 
-
-
 <hr>
 <Bs::FieldProperty
   @label="Enter a sample text with elements between ${ and }!!"
   @input="text with ${param1} and ${param2}"
   @inputType="textarea"
+  @constraints={{this.constraints}}
 />
-
 
 <hr>
 <Bs::FieldProperty

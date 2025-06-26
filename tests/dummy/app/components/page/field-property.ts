@@ -1,7 +1,6 @@
 import Component from '@glimmer/component';
-import {action} from "@ember/object";
 import {tracked} from "@glimmer/tracking";
-import {extractParams, replaceParams} from "@fmadler/bs-layout/utils/string-utils"
+//import {type FieldConstraint, FieldType} from "@fmadler/bs-layout/components/bs/model/field-model";
 
 export interface PageFieldPropertySignature {
   // The arguments accepted by the component
@@ -16,8 +15,25 @@ export interface PageFieldPropertySignature {
 
 export default class PageFieldProperty extends Component<PageFieldPropertySignature> {
 
-
   textWithPlaceholders=null
+
+  constraints = [
+    {
+      name: 'param1',
+      type: "STRING",
+      defaultValue: 'name',
+      mandatory: true,
+      placeHolder: 'param1 placeholder',
+    },
+    {
+      enumeration: ['paramA', 'paramB', 'paramC'],
+      name: 'param2',
+      type: "STRING",
+      defaultValue: 'name',
+      mandatory: true,
+      placeHolder: 'param2 placeholder',
+    }
+  ];
 
   @tracked
   textWithPlaceholdersResult="";
@@ -28,11 +44,5 @@ export default class PageFieldProperty extends Component<PageFieldPropertySignat
   @tracked
   extractedParams:any;
 
-
-  @action
-  callback(propName:string, propValue:string, event:any) {
-    this.propertyMap.set(propName,{name:propName, value:propValue});
-    this.textWithPlaceholdersResult = replaceParams(this.textWithPlaceholders, this.propertyMap);
-  }
 
 }

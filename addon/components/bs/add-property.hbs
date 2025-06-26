@@ -10,7 +10,7 @@
   {{#if @property.constraint.enumeration}}
     <select data-cy="property-{{@property.name}}" class="form-select"
       {{on "change" (fn @method @property.name this.value)}}>
-      <option selected>Choose...</option>
+      <option selected>{{if @property.constraint.placeHolder @property.constraint.placeHolder "Choose..."}}</option>
       {{#each @property.constraint.enumeration as |item index| }}
         {{#if (eq item this.value)}}
           <option value="{{item}}" selected>{{item}}</option>
@@ -32,13 +32,16 @@
   <div class="input-group-append">
     <button class="btn btn-outline-secondary"
             data-cy="replace-{{@property.name}}"
-            type="button" {{on "click" (fn @method @property.name this.value)}}>
+            type="button" {{on "click" (fn @method @property.name this.value)}}
+            disabled={{@property.constraint.enumeration}}
+    >
       Replace
-      {{#if (eq @value @currentValue)}}
+      {{#if (eq @property.value @property.currentValue)}}
         <span style="color:darkgreen">
           <FaIcon @icon="check"/>
         </span>
       {{/if}}
+
     </button>
   </div>
 </div>

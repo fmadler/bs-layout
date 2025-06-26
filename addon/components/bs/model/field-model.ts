@@ -5,7 +5,7 @@ export interface FieldConstraint {
   defaultValue: string;
   mandatory: boolean;
   placeHolder: string;
-  example: string;
+  example?: string;
   enumeration?: [string];
   validation?: FieldValidation;
 }
